@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+void sum()
+{
+	while(1)
+	{
+		printf("sum is: %d\n",5+3);
+	}
+
+}
+
+
+
+int main()
+{
+
+
+
+	return 0;
+}
