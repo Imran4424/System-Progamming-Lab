@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <pthread.h>
+
+
+
+const BUFF_SIZE = 1024;
+
+char msgBuff[] = "Hello writer";
+
+void *pipe_one(void *pipeName)
+{
+	umask(0);
+
+	int *fd2;
+	
+	mknod(pipeName, S_IFIFO | 0666, 0);
+
+	fd2 = open( *(char*)pipeName, O_RDONLY);
+	
+	read(fd2,msgBuff,strlen(msgBuff)+1);
+	
+	close(fd2);
+
+}
+
+
+int main(int num,char *argv[])
+
+{
+
+	int fd;
+
+	
+
+	char *pipeName = "Pipe2";
+	
+	pthread_t TID[2];
+	
+	char *ter_pipe = argv[1];
+	
+	int tdstatus;
+	
+	tdstatus = pthread_create(&TID[0],NULL,pipe_one,&ter_pipe);
+	
+	if(tdstatus = 0)
+	{
+		printf("can't create the thread 1");
+		
+		return;
+	}
+
+	
+
+	umask(0);
+
+
+
+	fd = open(pipeName, O_WRONLY);
+
+	write(fd, msgBuff, BUFF_SIZE);
+
+	close(fd);
+	
+	
+
+	
+
+	printf("I am reader\n");
+
+	return 0;
+
+}
