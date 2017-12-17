@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+
+const logical_memory = 32;
+const page_size = 4;
+const logical_address_space = 8;
+
+
+int main()
+{
+	int logical_address;
+	
+	
+	
+	return 0;
+}
