@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 const main_memory = 32;
 const frame_size = 4;
