@@ -1,13 +1,24 @@
-/* ==============================================
+/* ======================================================================
 	FileName: pointerExample_v1.c
    Purpose: To understand how a pointer works.
-   ----------------------------------------------
+	----------------------------------------------------------------------
+	How to Run: 
+	A. At a terminal, type
+		$ gcc pointerExample_v1.c -o pointerExample_v1.exe 
+		$ ./pointerExample_v1.exe
+   ----------------------------------------------------------------------
+	Notes:
+	A. It is better for us trying to understand each case in ascending 
+		order.
+	----------------------------------------------------------------------
    Sangeeta Biswas, Ph.D.
 	Assistant Professor,
 	Dept. of CSE, University of Rajshahi,
-	Rajshahi-6205, Bangladesh
+	Rajshahi-6205, Bangladesh.
+	sangeeta.cse.ru@gmail.com / sangeeta.cse@ru.ac.bd
+	----------------------------------------------------------------------
 	15/11/2017
-	==============================================
+	======================================================================
 */
 
 #include<stdio.h>
@@ -63,8 +74,11 @@ void case7(){
 	x[1] = 102.389;
 	x[2] = 53.53;
 
-	/* Like variable pointer we need to cast here. */
-   result = (float *) sumVoidVoid(x);
+	/* 
+		Like variable pointer, we need to cast the return type
+		here. 
+	*/
+   	result = (float *) sumVoidVoid(x);
 	printf("Sum of elements of x: %f\n\n", *result);
 }
 
@@ -127,10 +141,12 @@ void case4(){
  	MD mD;
 
 	/* 
-		Interesting VOID pointer. At the beginning
-		VOID pointer points to nothing. Therefore, we 
-		will have to cast it to the appropriate type 
-		by prefixing it with a type name in parentheses.
+		Interesting  but dangerous VOID pointer. At the beginning
+		VOID pointer points to nothing. After that it acts 
+		slightly similar to function overloading/operator 
+		overloading in C++. We will have to cast it to the 
+		appropriate type by prefixing it with a type name in 
+		parentheses. 
 	*/
 	void *p;	
 	
@@ -163,7 +179,8 @@ void case3(){
 	/*	
 		The array varible's name holds the address to the first 
 		element in the array, which can be assigned to another
-		pointer variable.
+		pointer variable. Pointer variable can be accessesed like
+		an array using index number.
 	*/
 	p = x;
 	printf("*x: %f, *(x+1): %f, *(x+2): %f\n", *x, *(x+1), *(x+2));
@@ -178,6 +195,7 @@ void case3(){
 		message, if we try to do the following things.
 	*/
 	//y = x;
+	//y = p; 
 	//printf("Value of y:\n------------\n");
 	//printf("y[0]: %f, y[1]: %f, y[2]: %f\n\n", y[0], y[1], y[2]);
 }
