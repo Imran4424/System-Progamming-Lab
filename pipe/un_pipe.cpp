@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<unistd.h>
-#include<sys/wait.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
 #include <sys/shm.h>
 #include <sys/stat.h>
 
@@ -21,7 +21,6 @@ int main()
 
 	//close(fd[WRITE_END]);
 
-	write(fd[WRITE_END],msg,size_b);
 
 
 	
@@ -61,6 +60,8 @@ int main()
 	}
 	else
 	{
+		write(fd[WRITE_END],msg,size_b);
+	
 		pid_t childPID_DEAD = wait(NULL);
 
 		printf("\nI am Process %d,I am sorry to say that my child, Process %d is dead now.\n\n",myPID,childPID_DEAD);
