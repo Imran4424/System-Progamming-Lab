@@ -31,7 +31,7 @@ int main()
 		return;
 	}
 	
-	sleep(3);
+	//sleep(3);
 	
 	num = 25;
 	
