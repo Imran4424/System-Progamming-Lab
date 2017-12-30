@@ -1,3 +1,22 @@
+/*
+===========================================================
+FileName: whatsapp.c
+
+About: This is a socket programming code
+
+	   We implement server socket here
+
+Purpose: 
+
+
+
+
+
+
+===========================================================
+*/
+
+
 #include <sys/socket.h>		// For system call: socket(). 
 #include <stdio.h>			// For standard input-output.
 #include <netinet/in.h>		// For sockaddr_in, sockaddr, htons().  
@@ -14,7 +33,7 @@
 //global variable
 int good_bye_count = 0;
 int client_socket;
-int recei_status = false;
+bool recei_status = false;
 
 
 void *sender()

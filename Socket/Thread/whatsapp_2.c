@@ -5,15 +5,16 @@
 #include <netdb.h>
 #include <sys/types.h>
 #include <arpa/inet.h>
-#include <stdbool.h>
-#include <pthread.h>
-#include <string.h>
-#include <stdlib.h>
+#include <stdbool.h>       // for boolean type variables
+#include <pthread.h>       // for multi thread operation
+#include <string.h>        // for strcmp and strlen
+#include <stdlib.h>        // for exit system call
 
 
 //global variable
 int good_bye_count = 0;
 int client_socket;
+bool connection_status = false;
 
 
 
@@ -76,9 +77,20 @@ void *received()
 
 
     int server_socket;
+
+    line:
+
     server_socket = connect(client_socket, sockaddr_ptr, addr_len);
 
-    printf("connection stablish\n");
+    if(server_socket == 0)
+    {
+    	connection_status = true;
+	    printf("connection stablish\n");
+    }
+
+
+    //printf("%d\n",server_socket );
+
 
     
     // STEP-3: recv()
@@ -91,6 +103,11 @@ void *received()
 
 	while(good_bye_count != 2)
 	{
+		if(!connection_status)
+		{
+			goto line;
+		}
+
         //printf("receiver in while\n");
 
 		int receiving = recv(client_socket, &messenger_one_response, sizeof(messenger_one_response), 0);
