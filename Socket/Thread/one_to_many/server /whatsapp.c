@@ -34,6 +34,8 @@ Purpose:
 int good_bye_count = 0;
 int client_socket;
 bool recei_status = false;
+bool file_share_mode = false;
+char file_share[] = "share file";
 
 
 void *sender()
@@ -76,16 +78,62 @@ void *sender()
 
     //declaring the variables
 
-	char messenger_one_message[256];
+	char messenger_one_message[1024];
 	
 
 	while(good_bye_count != 2)
 	{
 		//printf("sender in while\n");
 
-		scanf ("%[^\n]%*c", messenger_one_message);  ///send good bye to finish the conversation
+        input:
+
+		scanf ("%[^\n]s", messenger_one_message);  ///send good bye to finish the conversation
 
 		//scanf("%[^\n]s",server_message);
+
+        if(strcmp(messenger_one_message,"read my file") == 0)
+        {
+            FILE *ptr;
+
+            ptr = fopen("read_me.txt","r");
+            
+            if(ptr == NULL)
+            {
+                printf("Error\n");
+
+                return 0;
+            }
+
+            char contents[1024];
+
+            fscanf(ptr,"%[^\n]s",contents); // to read file contents
+
+            printf("my file contents:\n%s\n",contents);
+
+            goto input;
+        }
+
+        if(strcmp(messenger_one_message,"read received file") == 0)
+        {
+            FILE *ptr;
+
+            ptr = fopen("received_file.txt","r");
+            
+            if(ptr == NULL)
+            {
+                printf("Error\n");
+
+                return 0;
+            }
+
+            char contents[1024];
+
+            fscanf(ptr,"%[^\n]s",contents); // to read file contents
+
+            printf("my file contents:\n%s\n",contents);
+
+            goto input;
+        }
 				
 	   	int sending = send(client_socket, messenger_one_message, sizeof(messenger_one_message), 0);
 				
@@ -93,6 +141,11 @@ void *sender()
 		{
 			perror("In server sending");
 		}
+
+		if(strcmp(messenger_one_message,file_share) == 0)
+        {
+            file_share_mode = true;
+        }
 
 		if(strcmp(messenger_one_message,"good bye") == 0)
         {
@@ -112,7 +165,7 @@ void *sender()
 void *received()
 {
 
-	char messenger_two_response[256];
+	char messenger_two_response[1024];
 
 
 	while(good_bye_count != 2)
@@ -124,21 +177,83 @@ void *received()
             continue;
         }
 
-		int receiving = recv(client_socket,messenger_two_response,sizeof(messenger_two_response),0);
+    	int receiving = recv(client_socket,messenger_two_response,sizeof(messenger_two_response),0);
 
-        
+    
 
     	if(receiving < 0)
         {
         	printf("received is failed\n");
         }
-        else
+        else if(!file_share_mode)
         {
             // 3.2. Check sever's response.
             printf("Anik: %s\n", messenger_two_response);
 
         }
+       
+        if(file_share_mode)
+        {
 
+            char msg[] = "File received successful";
+
+            FILE *ptr;
+
+            ptr = fopen("received_file.txt","w");
+
+            fprintf(ptr, "%s\n",messenger_two_response ); // to write on file
+
+            printf("%s\n",msg );
+
+            int sending = send(client_socket,msg,strlen(msg)+1,0);
+
+            
+            if(sending < 0)
+            {
+                perror("In server sending");
+            }
+            
+
+            fclose(ptr);
+
+            file_share_mode = false;
+        }
+		
+
+
+        if(strcmp(messenger_two_response,file_share) == 0)
+	    {
+
+	    	//sleep(1);
+
+	        FILE *ptr;
+
+	        ptr = fopen("read_me.txt","r");
+	        
+	        if(ptr == NULL)
+			{
+				printf("Error\n");
+
+				return 0;
+			}
+
+			char contents[1024];
+
+			fscanf(ptr,"%[^\n]s",contents); // to read file contents
+
+			int sending = send(client_socket, contents, sizeof(contents), 0);
+				
+			if(sending < 0)
+			{
+				printf("file send failed\n");
+			}
+			else
+			{
+				printf("File send successful\n");
+			}
+
+			fclose(ptr);
+	    } 
         
         if(strcmp(messenger_two_response,"good bye") == 0)
 	    {
