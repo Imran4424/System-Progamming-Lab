@@ -35,6 +35,8 @@ int server_socket;
 
 int good_bye_count = 0;
 int good_bye_count2 = 0;
+int good_bye_count_final = 0;
+
 int client_socket_connect = 0;
 int client_socket;
 int client_socket2;
@@ -77,7 +79,7 @@ void *sender()
 
                 input:
 
-                scanf ("%[^\n]s", messenger_one_message);  ///send good bye to finish the conversation
+                scanf ("%[^\n]%*c", messenger_one_message);  ///send good bye to finish the conversation
 
                 //scanf("%[^\n]s",server_message);
 
@@ -85,7 +87,7 @@ void *sender()
                 {
                     printf("with which client you want to resume your chat\n");
 
-                    scanf("%[^\n]s",indication);
+                    scanf("%[^\n]%*c",indication);
 
                     receive1_state = false;
 
@@ -107,7 +109,7 @@ void *sender()
 
                     char contents[1024];
 
-                    fscanf(ptr,"%[^\n]s",contents); // to read file contents
+                    fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
                     printf("my file contents:\n%s\n",contents);
 
@@ -129,7 +131,7 @@ void *sender()
 
                     char contents[1024];
 
-                    fscanf(ptr,"%[^\n]s",contents); // to read file contents
+                    fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
                     printf("my file contents:\n%s\n",contents);
 
@@ -159,10 +161,14 @@ void *sender()
     
 
 	
+    if(good_bye_count == 2)
+    {
+        good_bye_count_final += 2;
+    }
 
 
 	// Close socket
-    if (good_bye_count == 2)
+    if (good_bye_count_final == 4)
     {
         close(server_socket);
     }
@@ -252,7 +258,7 @@ void *received()
 
                     char contents[1024];
 
-                    fscanf(ptr,"%[^\n]s",contents); // to read file contents
+                    fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
                     int sending = send(client_socket, contents, sizeof(contents), 0);
                         
@@ -307,7 +313,7 @@ void *sender2()
 
                 input:
 
-                scanf ("%[^\n]s", messenger_one_message);  ///send good bye to finish the conversation
+                scanf ("%[^\n]%*c", messenger_one_message);  ///send good bye to finish the conversation
 
                 //scanf("%[^\n]s",server_message);
 
@@ -315,7 +321,7 @@ void *sender2()
                 {
                     printf("with which client you want to resume your chat\n");
 
-                    scanf("%[^\n]s",indication);
+                    scanf("%[^\n]%*c",indication);
 
                     receive2_state = false;
 
@@ -337,7 +343,7 @@ void *sender2()
 
                     char contents[1024];
 
-                    fscanf(ptr,"%[^\n]s",contents); // to read file contents
+                    fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
                     printf("my file contents:\n%s\n",contents);
 
@@ -359,7 +365,7 @@ void *sender2()
 
                     char contents[1024];
 
-                    fscanf(ptr,"%[^\n]s",contents); // to read file contents
+                    fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
                     printf("my file contents:\n%s\n",contents);
 
@@ -387,10 +393,13 @@ void *sender2()
     }
 	
 
-	
+	if(good_bye_count2 == 2)
+    {
+        good_bye_count_final += 2;
+    }
 
 
-	if (good_bye_count == 2)
+	if (good_bye_count_final == 4)
     {
         close(server_socket);
     }
@@ -480,7 +489,7 @@ void *received2()
 
                     char contents[1024];
 
-                    fscanf(ptr,"%[^\n]s",contents); // to read file contents
+                    fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
                     int sending = send(client_socket2, contents, sizeof(contents), 0);
                         
@@ -535,7 +544,7 @@ int main()
     bind(server_socket, sockaddr_ptr, addr_len);
         
 
-    for(int i = 0;i<2;i++)
+    for(int i = 0;i<4;i++)
     {
 	    // Listen
 	    listen(server_socket, 5);  // here five indicates number of clients server socket can accept
@@ -570,7 +579,7 @@ int main()
 
 
 
-			/*if(i == 2)
+			if(i == 2)
 			{
 				client_socket2 = client_socket_connect;
 
@@ -590,7 +599,7 @@ int main()
 					perror("Error during pthread_create()");
 					exit(EXIT_FAILURE);
 				}
-			}*/
+			}
 	    }
 
     }
@@ -600,7 +609,7 @@ int main()
     
     printf("with which client you want to chat first\n");
 
-	scanf("%[^\n]s",indication);
+	scanf("%[^\n]%*c",indication);
 
 	
 

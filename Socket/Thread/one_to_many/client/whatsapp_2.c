@@ -34,15 +34,15 @@ void *sender()
 
         input:
 
-		scanf ("%[^\n]s", messenger_two_message);  ///send good bye to finish the conversation
+		scanf ("%[^\n]%*c", messenger_two_message);  ///send good bye to finish the conversation
 
-		//scanf("%[^\n]s",server_message);
+		//scanf("%[^\n]%*c",server_message);
 
         if(strcmp(messenger_two_message,"read my file") == 0)
         {
             FILE *ptr;
 
-            ptr = fopen("read_me.txt","r");
+            ptr = fopen("cfile.txt","r");
             
             if(ptr == NULL)
             {
@@ -53,7 +53,7 @@ void *sender()
 
             char contents[1024];
 
-            fscanf(ptr,"%[^\n]s",contents); // to read file contents
+            fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
             printf("my file contents:\n%s\n",contents);
 
@@ -75,7 +75,7 @@ void *sender()
 
             char contents[1024];
 
-            fscanf(ptr,"%[^\n]s",contents); // to read file contents
+            fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
             printf("my file contents:\n%s\n",contents);
 
@@ -236,7 +236,7 @@ void *received()
 
             char contents[1024];
 
-            fscanf(ptr,"%[^\n]s",contents); // to read file contents
+            fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
             int sending = send(client_socket,&contents,sizeof(contents),0);
                 
