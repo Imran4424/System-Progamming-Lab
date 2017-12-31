@@ -24,7 +24,7 @@ int main()
 	
 	tdstatus = pthread_create(&TID[0],NULL,thread_1,NULL);
 	
-	if(tdstatus = 0)
+	if(tdstatus != 0)
 	{
 		printf("can't create the thread 1");
 		
@@ -37,7 +37,7 @@ int main()
 	
 	tdstatus = pthread_create(&TID[1],NULL,thread_2,NULL);
 	
-	if(tdstatus = 0)
+	if(tdstatus != 0)
 	{
 		printf("can't create the thread 2");
 		
