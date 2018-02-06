@@ -70,14 +70,15 @@ void *sender()
             {
                 printf("Error\n");
 
-                return 0;
             }
+            else
+            {
+                char contents[1024];
 
-            char contents[1024];
+                fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
 
-            fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
-
-            printf("my file contents:\n%s\n",contents);
+                printf("my file contents:\n%s\n",contents);
+            }
 
             goto input;
         }

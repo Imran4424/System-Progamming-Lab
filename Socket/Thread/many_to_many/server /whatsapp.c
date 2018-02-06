@@ -126,15 +126,14 @@ void *sender()
                     {
                         printf("Error\n");
 
+                        return 0;
                     }
-                    else
-                    {
-                        char contents[1024];
 
-                        fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
+                    char contents[1024];
 
-                        printf("my file contents:\n%s\n",contents);
-                    }
+                    fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
+
+                    printf("my file contents:\n%s\n",contents);
 
                     goto input;
                 }
@@ -350,21 +349,20 @@ void *sender2()
                 {
                     FILE *ptr;
 
-                    ptr = fopen("received_file22.txt","r");
+                    ptr = fopen("received_file.txt","r");
                     
                     if(ptr == NULL)
                     {
                         printf("Error\n");
 
+                        return 0;
                     }
-                    else
-                    {
-                        char contents[1024];
 
-                        fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
+                    char contents[1024];
 
-                        printf("my file contents:\n%s\n",contents);
-                    }
+                    fscanf(ptr,"%[^\n]%*c",contents); // to read file contents
+
+                    printf("my file contents:\n%s\n",contents);
 
                     goto input;
                 }
@@ -443,7 +441,7 @@ void *received2()
 
             FILE *ptr;
 
-            ptr = fopen("received_file22.txt","w");
+            ptr = fopen("received_file.txt","w");
 
             fprintf(ptr, "%s\n",messenger_two_response ); // to write on file
 
