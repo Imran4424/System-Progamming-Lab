@@ -11,10 +11,13 @@ int main()
     int i=0;
 
     printf("pid=%d\n\n\n",getpid());
+
+    int targetpid = getpid();
+
     while(1)
     {
-        printf("%d\n",i);
-        i++;
+        kill(targetpid,SIGTERM);
+
         sleep(3);
     }
     return 0;

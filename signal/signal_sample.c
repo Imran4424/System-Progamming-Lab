@@ -3,15 +3,9 @@
 #include <signal.h>
 
 
-void signalHandler(int sig)
-{
-	printf("/t/tMy Custom signal sent\n");
-}
-
 
 int main(int argc, char const *argv[])
 {
-	signal(SIGTERM,signalHandler);
 
 	int i = 0;
 
