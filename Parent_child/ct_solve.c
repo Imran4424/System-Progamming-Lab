@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 
 	if(cid == 0)
 	{
-		printf("My pid is: %d\n", mypid);
+		printf("My pid is: %d %d\n", mypid,getpid());
 	}
 	else
 	{
