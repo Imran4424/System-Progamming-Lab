@@ -24,6 +24,8 @@ int main(int argc, char const *argv[])
 	}
 	else
 	{
+		sleep(3);
+
 
 		printf("I am parent process.my pid: %d\n", getpid());
 		printf("My child process is: %d\n",childPID);
