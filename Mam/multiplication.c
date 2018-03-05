@@ -77,8 +77,7 @@ int main(int argc, char *argv[]){
 	/* Only for tracing this process by 'top' or 
 		'pstree' command.
 	*/
-	while(1) 
-		;
+	while(1) ;
 
 	return 0;
 }
