@@ -14,13 +14,20 @@ int main(int argc, char const *argv[])
 	}
 	else if(childPID == 0)
 	{
-		printf("I am child process.My pid is %d\n",getpid());
+		while(1)
+		{
 
-		while(1);
+			printf("I am child process.My pid is %d\n",getpid());
+		}
+
+
+		
 	}
 	else
 	{
 		printf("I am parent process.My pid is %d\n",getpid());
+
+		return 0;
 	}
 
 
