@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
 	{
 		printf("I am parent process.My pid is %d\n",getpid());
 
-		return 0;
+		//return 0;
 	}
 
 
