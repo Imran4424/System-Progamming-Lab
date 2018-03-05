@@ -6,7 +6,7 @@ About: This is a socket programming code
 
 	   We implement server socket here
 
-Purpose: 
+Purpose: To communicate with two different process in different pc
 
 
 
