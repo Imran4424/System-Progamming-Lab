@@ -20,7 +20,6 @@ int main(int argc, char const *argv[])
 
 		exit(0);
 
-		sleep(100);
 	}
 	else
 	{
