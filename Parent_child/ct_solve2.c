@@ -11,5 +11,7 @@ int main(int argc, char const *argv[])
 
 	printf("My parent's PID: %d\n", getppid());
 
+	while(1);
+
 	return 0;
 }
