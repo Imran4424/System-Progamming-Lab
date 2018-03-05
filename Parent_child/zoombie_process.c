@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
 		printf("I am parent process.my pid: %d\n", getpid());
 		printf("My child process is: %d\n",childPID);
 
-		pause();
+		while(1);
 	}
 
 	//return 0;
