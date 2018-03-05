@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
 	}
 	else
 	{
-		sleep(10);
+		//sleep(10);
 
 
 		printf("I am parent process.my pid: %d\n", getpid());
