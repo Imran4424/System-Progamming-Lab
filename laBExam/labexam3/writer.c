@@ -27,7 +27,7 @@ void *writer1()
 	//scanf("%[^\n]",writer1_story);
 	kill(targetPID,SIGTERM);
 
-	sprintf(writer1_story,"Hi i am writer1, nice to meet you");
+	sprintf(writer1_story,"Hi i am writer 1, nice to meet you");
 
 	fd = open(pipeName,O_WRONLY);
 	write(fd,writer1_story,strlen(writer1_story)+1);
@@ -45,7 +45,7 @@ void *writer2()
 	char writer2_story[512];
 	kill(targetPID2,SIGTERM);
 
-	printf("Hi, I am writer2, write your your story\n");
+	printf("Hi, I am writer 2, write your your story\n");
 	//scanf("%[^\n]",writer1_story);
 
 	sprintf(writer2_story,"Hi i am writer1, nice to meet you");
