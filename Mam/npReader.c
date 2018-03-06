@@ -74,12 +74,16 @@ int main(int argc, char *argv[]){
 			 Read a part of the story from the named pipe. 
 			===================================================== */
 		fd = open(argv[1], O_RDONLY);
+
 		if(fd == -1){
 			perror("Error during open()");
 			exit(EXIT_FAILURE);
 		}
-   	read(fd, storyBuffer, BUFF_SZ);
+
+   		read(fd, storyBuffer, BUFF_SZ);
+
 		close(fd);
+		
 		write(1, storyBuffer, strlen(storyBuffer) + 1);
 
 		/* =====================================================
