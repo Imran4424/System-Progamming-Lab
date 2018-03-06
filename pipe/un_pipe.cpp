@@ -15,6 +15,7 @@ int main()
 	int fd[2];
 
 	char msg[] ="Dear,I am Your Parent Process\n\n";
+	
 	char msg2[size_b];
 	
 	pipe(fd); // creating a pipe
@@ -67,6 +68,7 @@ int main()
 		printf("\nI am Process %d,I am sorry to say that my child, Process %d is dead now.\n\n",myPID,childPID_DEAD);
 		
 		read(fd[READ_END],msg2,size_b);
+
 		printf("Last message from my child : %s ", msg2);
 
 	}
