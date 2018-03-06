@@ -18,7 +18,7 @@ int main(int num,char *argv[])
 
 	char msgBuff[BUFF_SIZE];
 
-	char *pipeName = "Pipe2";
+	char pipeName[] = "Pipe2";
 
 	
 

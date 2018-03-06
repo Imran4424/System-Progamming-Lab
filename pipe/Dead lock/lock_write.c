@@ -13,9 +13,9 @@ int main(int num,char *argv[])
 
 	int fd;
 
-	char *msgBuff = "Hello World";
+	char msgBuff[] = "Hello World";
 
-	char *pipeName = "Pipe1";
+	char pipeName[] = "Pipe1";
 
 
 
