@@ -17,8 +17,6 @@ int a = 0,N;
 void *thread1 (void *arg)
 {
 	
-	
-	
 	/* 
 		Local variables having common names 
 		with other threads. 
