@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-const BUFF_SIZE = 1024;
+const int BUFF_SIZE = 1024;
 
 
 int main(int num,char *argv[])
