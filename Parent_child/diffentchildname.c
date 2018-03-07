@@ -46,8 +46,8 @@ int main(int argc, char *argv[]){
 	/* Executable(i.e., exe) files of child processes. */
 	char exeFile[CHILD_N][BUFFER_SZ] = {
 		"/home/warrior/clone repo/System-Progamming-Lab/Mam/addition", 
-		"/home/warrior/clone repo/System-Progamming-Lab/Parent_child/subtraction",
-		"/home/warrior/clone repo/System-Progamming-Lab/Parent_child/multiplication",
+		"/home/warrior/clone repo/System-Progamming-Lab/Mam/subtraction",
+		"/home/warrior/clone repo/System-Progamming-Lab/Mam/multiplication",
 		"/home/warrior/clone repo/System-Progamming-Lab/Parent_child/division"	
 	};
 
