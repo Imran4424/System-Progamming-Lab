@@ -1,35 +1,3 @@
-/* ======================================================================
-	FileName: sameNameChildren.c
-
-   Purpose: To create multiple child processes of a process,e.g.,  P, 
-				having the same name of their parent, i.e., P.
-	----------------------------------------------------------------------
-	How to Run: 
-	A. At a terminal, type
-		$ gcc differentNameChildren.c -o differentNameChildren
-		$ ./differentNameChildren <childNo>
-		
-	B.	Example:
-		B.1 $ ./differentNameChildren 44 4
-
-		B.2. Open another terminal (Ctrl+Alt+T)
-			$ pstree 
-			-- gterminal -- bash -- differentNameCh -- addition
-															  	|-- subtraction
-															  	|-- multiplication
-															  	|-- division
-		B.3. Kill all processes by Ctrl+C 
-	----------------------------------------------------------------------
-   Sangeeta Biswas, Ph.D.
-	Assistant Professor,
-	Dept. of CSE, University of Rajshahi,
-	Rajshahi-6205, Bangladesh.
-	sangeeta.cse.ru@gmail.com / sangeeta.cse@ru.ac.bd
-	----------------------------------------------------------------------
-	12/10/2017
-	======================================================================
-*/
-
 #include <stdio.h>	// For perror().
 #include <unistd.h>	// For fork().
 #include <stdlib.h>	//	For atoi(), exit().
