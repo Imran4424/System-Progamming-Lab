@@ -45,10 +45,10 @@ int main(int argc, char *argv[]){
 
 	/* Executable(i.e., exe) files of child processes. */
 	char exeFile[CHILD_N][BUFFER_SZ] = {
-		"/home/sangeeta/OS/Code/InstantNoodlesFestival-2017/addition", 
-		"/home/sangeeta/OS/Code/InstantNoodlesFestival-2017/subtraction",
-		"/home/sangeeta/OS/Code/InstantNoodlesFestival-2017/multiplication",
-		"/home/sangeeta/OS/Code/InstantNoodlesFestival-2017/division"	
+		"/home/warrior/clone repo/System-Progamming-Lab/Mam/addition", 
+		"/home/warrior/clone repo/System-Progamming-Lab/Parent_child/subtraction",
+		"/home/warrior/clone repo/System-Progamming-Lab/Parent_child/multiplication",
+		"/home/warrior/clone repo/System-Progamming-Lab/Parent_child/division"	
 	};
 
 	for(i = 0; i < CHILD_N; i++){
