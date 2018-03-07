@@ -48,7 +48,7 @@ int main(int argc, char *argv[]){
 		"/home/warrior/clone repo/System-Progamming-Lab/Mam/addition", 
 		"/home/warrior/clone repo/System-Progamming-Lab/Mam/subtraction",
 		"/home/warrior/clone repo/System-Progamming-Lab/Mam/multiplication",
-		"/home/warrior/clone repo/System-Progamming-Lab/Parent_child/division"	
+		"/home/warrior/clone repo/System-Progamming-Lab/Mam/division"	
 	};
 
 	for(i = 0; i < CHILD_N; i++){
